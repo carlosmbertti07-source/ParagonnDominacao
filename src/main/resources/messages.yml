@@ -1,0 +1,166 @@
+# ==========================================================================
+#  ParagonnDominacao - messages.yml
+#  Todas as mensagens do plugin. Cores com &. Deixe "" para não enviar.
+#  Este arquivo é lido em UTF-8 (acentos funcionam normalmente).
+# ==========================================================================
+
+prefix: "&8[&6Dominação&8] &7"
+
+# ------------------------------------------------------------------ gerais
+no-permission: "&cVocê não tem permissão para isso."
+player-only: "&cApenas jogadores podem usar este comando."
+usage: "&cUso: &f%usage%"
+invalid-number: "&cNúmero inválido: &f%value%"
+unknown-arena: "&cArena &f%arena% &cnão encontrada."
+invalid-arena-name: "&cNome inválido &f%arena%&c. Use a-z, 0-9, _ ou - (até 32 caracteres)."
+clan-not-found: "&cClan &f%clan% &cnão encontrado no SimpleClans."
+reloaded: "&aConfiguração e mensagens recarregadas."
+
+# ------------------------------------------------------------------ área
+pos-set: "&aPosição &f%pos% &amarcada em &f%x%, %y%, %z%&a."
+need-selection: "&cMarque as duas posições com &f/dominacao pos1 &ce &f/dominacao pos2&c."
+different-worlds: "&cAs duas posições precisam estar no mesmo mundo."
+worldguard-missing: "&cWorldGuard 6 não encontrado (ou versão incompatível)."
+worldguard-region-not-found: "&cRegião &f%region% &cnão encontrada no WorldGuard deste mundo."
+arena-created: "&aArena &f%arena% &adefinida: &f%region% &7(%blocks% blocos)."
+arena-deleted: "&aArena &f%arena% &aremovida do config (dados no banco foram mantidos)."
+
+# ------------------------------------------------------------------ admin
+settime-done: "&aTempo de dominação da &f%arena% &adefinido para &f%minutes% minutos&a."
+setpoints-done: "&aPontos de &f%type% &ana &f%arena% &adefinidos para &f%amount%&a."
+points-done: "&aClan %clan% &aagora tem &f%points% pontos &ana &f%arena%&a."
+reset-clan-done: "&aDados do clan &f%clan% &ana &f%arena% &aforam zerados."
+reset-arena-done: "&aTodos os dados da arena &f%arena% &aforam zerados."
+citizens-missing: "&cO Citizens não está instalado."
+npc-placed: "&aNPC &f%type% &ada arena &f%arena% &aposicionado aqui."
+hologram-placed: "&aHolograma de top da arena &f%arena% &aposicionado aqui."
+hologram-removed: "&aHolograma de top da arena &f%arena% &aremovido."
+
+# ------------------------------------------------------------------ jogo
+kill-points: "&a+%points% pontos &7para o clan %clan% &7(abate de &f%player%&7)."
+anti-farm: "&cAbate em &f%player% &cnão rendeu pontos (anti-farm)."
+reset: "&cSeu clan abandonou a &f%arena%&c! O progresso de dominação (&f%time%&c) foi perdido."
+
+combat:
+  tagged: "&cVocê entrou em combate! Não pode sair da &f%arena% &cpor &f%seconds%s&c."
+  expired: "&aVocê saiu de combate e já pode deixar a &f%arena%&a."
+  blocked: "&cVocê está em combate! Aguarde &f%seconds%s &cpara sair da arena."
+  teleport-blocked: "&cVocê não pode se teleportar para fora da arena em combate (&f%seconds%s&c)."
+
+dominated:
+- ""
+- "&6&l✦ DOMINAÇÃO ✦"
+- "&eO clan &f%clan% &edominou a &c%arena%&e!"
+- "&7Recompensa: &a+%points% pontos"
+- ""
+
+# ------------------------------------------------------------------ action bar
+# single-clan: %clan% %arena% %time% %max%
+# two-clans: %clan1% %clan2% %time1% %time2% %max% %arena%
+# multiple-clans: %amount% %clan1% %clan2% %time1% %others% %max% %arena%
+actionbar:
+  single-clan: "&6O clan %clan% &6está tentando dominar a &c%arena% &f➜ &e%time%&7/&e%max%"
+  two-clans: "&cOs clans %clan1% &7(&e%time1%&7) &ce %clan2% &7(&e%time2%&7) &cestão batalhando na &f%arena%!"
+  multiple-clans: "&c%clan1%&c, %clan2% &ce +%others% clans estão disputando a &f%arena%!"
+  dominant-holding: "&aO clan %clan% &adomina a &c%arena%&a. Defenda a área!"
+  empty: ""
+  owner-label: "&aDOMINANTE"
+  paused-suffix: " &7(pausado)"
+
+# ------------------------------------------------------------------ top / stats / status
+top:
+  header:
+  - ""
+  - "&6&lTOP DOMINAÇÃO &7- &e%arena%"
+  - ""
+  line: " &f#%position% %clan% &7- &a%points% pontos &8(%dominations% dominações)"
+  empty:
+  - " &7Nenhum clan pontuou ainda."
+  footer:
+  - ""
+
+stats:
+- ""
+- "&6&l%arena%"
+- "&7Suas estatísticas"
+- ""
+- "&fClan: &e%clan%"
+- "&fAbates: &a%kills%"
+- "&fMortes: &c%deaths%"
+- "&fKDR: &e%kdr%"
+- "&fTempo na arena: &b%time%"
+- "&fPontos do Clan: &6%points% &7(#%position%)"
+- "&fDominações: &b%dominations%"
+- ""
+
+status:
+  header:
+  - ""
+  - "&6&l%arena% &7(%state%&7)"
+  - "&fClan dominante: &e%dominant%"
+  - "&fTempo para dominar: &e%max%"
+  - ""
+  clan-line: " &f%clan% &7- &e%time%&7/&e%max% &8(%players% na área)"
+  no-clans:
+  - " &7Nenhum clan disputando a área agora."
+  active: "&aativa"
+  inactive: "&cinativa/sem área"
+
+# ------------------------------------------------------------------ placeholders
+placeholder:
+  none: "Nenhum"
+  no-clan: "Sem clan"
+  empty-position: "---"
+
+# ------------------------------------------------------------------ hologramas
+# %arena% = nome da arena, %arena_upper% = nome em maiúsculas
+hologram:
+  # Acima do NPC de top (/dominacao npc top)
+  top:
+    lines:
+    - "&6&lTOP DOMINAÇÃO"
+    - "&f%arena_upper%"
+  # Holograma avulso de top de clans (/dominacao holograma set)
+  # line: %position% %clan% %points% %dominations%
+  board:
+    header:
+    - "&6&lTOP CLANS"
+    - "&fOs clans que mais dominam esta Mina"
+    - ""
+    line: "&6%position%º  &f[%clan%&f]  &e%points% &fpontos"
+    empty-line: "&6%position%º  &f[---]  &e0 &fpontos"
+    footer: []
+  champion:
+    lines:
+    - "&6&lCAMPEÃO DA MINA"
+    - "&fClan dominante: &e%clan%"
+    - "&fJogador: &e%player%"
+    - "&fAbates: &e%kills%"
+    no-kills:
+    - "&6&lCAMPEÃO DA MINA"
+    - "&fClan dominante: &e%clan%"
+    - "&fNenhum abate registrado ainda"
+    none:
+    - "&6&lCAMPEÃO DA MINA"
+    - "&fNenhum clan domina a &e%arena%"
+
+# ------------------------------------------------------------------ ajuda
+help:
+  player:
+  - ""
+  - "&6&lDOMINAÇÃO &7- comandos"
+  - " &e/dominacao top [arena] &7- ranking de clans"
+  - " &e/dominacao stats [arena] &7- suas estatísticas"
+  - " &e/dominacao status [arena] &7- situação da arena"
+  admin:
+  - "&6&lAdmin:"
+  - " &e/dominacao pos1 &7| &epos2 &7- marca a área"
+  - " &e/dominacao create <arena> [regiaoWG] &7- cria/redefine a arena"
+  - " &e/dominacao delete <arena>"
+  - " &e/dominacao reload"
+  - " &e/dominacao settime <arena> <minutos>"
+  - " &e/dominacao setpoints <kill|capture> <qtd> [arena]"
+  - " &e/dominacao points <add|remove|set> <clan> <qtd> [arena]"
+  - " &e/dominacao reset clan <clan> [arena] &7| &ereset arena <arena>"
+  - " &e/dominacao npc <top|campeao> [arena]"
+  - " &e/dominacao holograma <set|remove> [arena] &7- holograma de top"

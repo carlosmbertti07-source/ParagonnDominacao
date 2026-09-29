@@ -1,0 +1,68 @@
+# ==========================================================================
+#  ParagonnDominacao - menu.yml
+#  Menu aberto ao clicar no NPC de top (/dominacao npc top).
+#  Lido em UTF-8. Recarregue com /dominacao reload.
+#
+#  title ....... título (máx. 32 caracteres na 1.8). %arena% = nome da arena
+#  rows ........ linhas do baú (1 a 6)
+#  entries ..... quantas posições aparecem na descrição de cada cabeça
+#  items.<id>:
+#    slot ...... posição no baú (0 = canto superior esquerdo)
+#    type ...... CLAN_POINTS, CLAN_DOMINATIONS, CLAN_KILLS ou PLAYER_KILLS
+#    texture ... valor base64 da cabeça (ex.: minecraft-heads.com, campo "Value")
+#    name / header / line / empty-line / footer
+#                line: %position% %name% %value%
+#                footer: %my_position% %my_value% (posição do seu clan ou sua)
+#  close ....... botão que fecha o menu
+# ==========================================================================
+
+top-menu:
+  title: "&8TOP Dominação (%arena%)"
+  rows: 4
+  entries: 5
+  items:
+    abates:
+      slot: 12
+      type: PLAYER_KILLS
+      # Iron Block
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDZhNWRhNWE0ZDJiODIxM2IyZTk4ZTJjNWJlNWJkODlhNWM3OTE0OTJjYTdjNDZjMTc0ZDlhMTM3NmYwNTAzZCJ9fX0="
+      name: "&fTOP Abates &7(%arena%)"
+      header:
+      - ""
+      line: "&e%position%º &f%name% &7- &c%value% abates"
+      empty-line: "&e%position%º &8---"
+      footer:
+      - ""
+      - "&7Sua posição: &f#%my_position% &7(&c%my_value%&7)"
+    pontos:
+      slot: 13
+      type: CLAN_POINTS
+      # Gold Block
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTdmNTdlN2FhOGRlODY1OTFiYjBiYzUyY2JhMzBhNDlkOTMxYmZhYmJkNDdiYmM4MGJkZDY2MjI1MTM5MjE2MSJ9fX0="
+      name: "&6TOP Pontos &7(%arena%)"
+      header:
+      - ""
+      line: "&e%position%º &f%name% &7- &a%value% pontos"
+      empty-line: "&e%position%º &8---"
+      footer:
+      - ""
+      - "&7Seu clan: &f#%my_position% &7(&a%my_value%&7)"
+    dominacoes:
+      slot: 14
+      type: CLAN_DOMINATIONS
+      # Diamond Block
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGJmYzdmYTRlNzRiNmU0MDFhZTA2NDE0OGFlNWU3NjhiODkzZjFkOTI5N2Y4NzQ3NTEwMWY3MjI1YTJhNWE2YSJ9fX0="
+      name: "&bTOP Dominações &7(%arena%)"
+      header:
+      - ""
+      line: "&e%position%º &f%name% &7- &b%value% dominações"
+      empty-line: "&e%position%º &8---"
+      footer:
+      - ""
+      - "&7Seu clan: &f#%my_position% &7(&b%my_value%&7)"
+  close:
+    slot: 31
+    # Redstone Block
+    texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmI3OGZhNWRlZmU3MmRlYmNkOWM3NmFiOWY0ZTExNDI1MDQ3OWJiOWI0NGY0Mjg4N2JiZjZmNzM4NjEyYiJ9fX0="
+    name: "&cFechar"
+    lore: []

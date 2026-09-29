@@ -1,0 +1,150 @@
+# ==========================================================================
+#  ParagonnDominacao - config.yml
+# ==========================================================================
+#  Toda a documentacao fica neste cabecalho: comandos como /dominacao create,
+#  settime e setpoints salvam este arquivo, e o Bukkit 1.8 so preserva os
+#  comentarios do topo. (Evite acentos aqui: o Bukkit 1.8 no Windows grava
+#  com o charset do sistema. Toda linha deste cabecalho precisa comecar com
+#  "# " - uma linha so com "#" encerraria o cabecalho e o resto seria apagado.)
+# --------------------------------------------------------------------------
+#  settings:
+#    default-arena ............ arena usada quando o comando/placeholder nao informa uma
+#    (a area e verificada e a ActionBar atualizada 1x por segundo; o cronometro sobe de 1 em 1)
+#    actionbar-dispute-recipients  quem ve "clan tentando dominar"/"clans batalhando":
+#                                  ALL (todos online), WORLD (mesmo mundo) ou INSIDE (so na arena)
+#    actionbar-holding-recipients  quem ve "clan dominante defendendo a area" (ALL, WORLD, INSIDE)
+#                                  Quem esta dentro da arena sempre ve a mensagem dela.
+#    combat-wall-refresh-ticks  de quantos em quantos ticks a parede de combate e atualizada
+#    ignored-gamemodes ........ modos que nao contam como presenca (ex.: CREATIVE, SPECTATOR)
+#    clan-display ............. como exibir o clan: TAG, COLOR_TAG ou NAME
+#    top-size ................. quantos clans aparecem no /dominacao top e no holograma (max 10)
+#    broadcast-domination ..... true = anuncia a dominacao para o servidor todo
+#    hologram-line-spacing .... distancia entre as linhas dos hologramas
+# --------------------------------------------------------------------------
+#  database:
+#    type ..................... SQLITE (padrao, arquivo local) ou MYSQL
+#    save-interval-seconds .... de quanto em quanto tempo os dados em memoria sao gravados
+# --------------------------------------------------------------------------
+#  arenas.<nome>:
+#    enabled .................. liga/desliga a arena
+#    display-name ............. nome exibido nas mensagens (%arena%)
+#    region ................... preenchido pelo /dominacao create (world + pos1/pos2)
+#    domination-time .......... segundos continuos para dominar (900 = 15 minutos)
+#    points.kill .............. pontos por inimigo eliminado dentro da arena
+#    points.domination ........ pontos ao dominar
+#    anti-farm.enabled ........ protecao contra farm de kills
+#    anti-farm.kill-cooldown .. segundos ate a mesma vitima dar pontos de novo ao mesmo clan
+#    kills.require-killer-inside  o assassino tambem precisa estar dentro da arena
+#    kills.ignore-allies ...... abates entre clans aliados nao contam
+#    timer.reset-when-clan-leaves  progresso volta a 00:00 quando todos os membros saem
+#    timer.pause-when-contested    true = cronometros pausam com 2+ clans na area
+#    timer.owner-can-recapture     true = o clan dominante pode dominar de novo (+pontos)
+#    timer.reset-all-on-capture    true = zera o progresso de TODOS os clans na captura
+#    timer.reset-notify-min-seconds  so avisa o reset se o clan tinha pelo menos X segundos
+#    rewards.domination-tag.tag ... tag do clan dominante (%dominacao_tag% no PlaceholderAPI)
+#         Todos os membros do clan dominante recebem essa tag automaticamente:
+#    rewards.domination-tag.show-in-chat ..... tag antes do nome no chat
+#    rewards.domination-tag.show-above-head .. tag acima da cabeca e no TAB (prefixo de time,
+#                                              max. 16 caracteres; desligue se usar outro plugin de nametag)
+#    rewards.domination-tag.gain-commands / lose-commands
+#         comandos do console executados para CADA membro ao ganhar/perder a tag.
+#         Variaveis: %player% %uuid% %clan% %tag% %arena%
+#         Exemplo LuckPerms:
+#           gain-commands: ['lp user %player% meta setsuffix 100 " %tag%"']
+#           lose-commands: ['lp user %player% meta removesuffix 100']
+#    rewards.capture-commands .. comandos executados UMA vez na captura
+#         Variaveis: %clan% %clan_display% %arena% %points%
+#    npcs.update-interval ..... segundos entre atualizacoes dos NPCs/hologramas
+#    npcs.hologram-height ..... altura do holograma acima do pe do NPC
+#    npcs.top-name ............ nome interno do NPC de top (ate 16 caracteres)
+#    npcs.top-skin ............ nick do jogador cuja skin o NPC de top usa ('' = skin padrao)
+#    npcs.champion-default-name  skin/nome do NPC campeao quando nao ha dominante
+#    npcs.capture-lightning.enabled  raio (so visual, sem dano/fogo) no NPC campeao ao dominar
+#    npcs.capture-lightning.strikes  quantidade de raios (1 a 10)
+#    top-hologram ............. posicao do holograma de top de clans (preenchido pelo
+#                               /dominacao holograma set; textos em messages.yml -> hologram.board)
+#    combat-wall.enabled ...... quem entra em PvP dentro da arena nao pode sair ate o combate acabar
+#    combat-wall.combat-seconds  duracao do combate (renova a cada golpe dado ou recebido)
+#    combat-wall.radius ....... raio (blocos) da parede mostrada ao redor do jogador (max 16)
+#    combat-wall.material/data  bloco falso da parede, visivel SO para quem esta em combate
+#                               (STAINED_GLASS + 14 = vidro vermelho; BARRIER = invisivel de verdade)
+#    combat-wall.blocked-teleports  causas de teleporte bloqueadas em combate
+#                               (ENDER_PEARL, COMMAND, PLUGIN, NETHER_PORTAL, END_PORTAL, UNKNOWN...)
+#    Obs.: a regiao precisa cobrir toda a altura jogavel da arena - sair pelo teto/chao
+#          tambem conta como sair da arena.
+# ==========================================================================
+
+settings:
+  default-arena: minapvp
+  actionbar-dispute-recipients: ALL
+  actionbar-holding-recipients: INSIDE
+  combat-wall-refresh-ticks: 5
+  ignored-gamemodes:
+  - CREATIVE
+  - SPECTATOR
+  clan-display: COLOR_TAG
+  top-size: 5
+  broadcast-domination: true
+  hologram-line-spacing: 0.27
+
+database:
+  type: SQLITE
+  sqlite-file: database.db
+  table-prefix: dom_
+  save-interval-seconds: 60
+  mysql:
+    host: localhost
+    port: 3306
+    database: minecraft
+    user: root
+    password: ''
+    use-ssl: false
+
+arenas:
+  minapvp:
+    enabled: true
+    display-name: Mina PvP
+    domination-time: 900
+    points:
+      kill: 5
+      domination: 50
+    anti-farm:
+      enabled: true
+      kill-cooldown: 300
+    kills:
+      require-killer-inside: true
+      ignore-allies: true
+    timer:
+      reset-when-clan-leaves: true
+      pause-when-contested: false
+      owner-can-recapture: false
+      reset-all-on-capture: false
+      reset-notify-min-seconds: 5
+    rewards:
+      domination-tag:
+        enabled: true
+        tag: '&6[Dominante]'
+        show-in-chat: true
+        show-above-head: true
+        gain-commands: []
+        lose-commands: []
+      capture-commands: []
+    npcs:
+      update-interval: 30
+      hologram-height: 1.9
+      top-name: TopDominacao
+      top-skin: ''
+      champion-default-name: Campeao
+      capture-lightning:
+        enabled: true
+        strikes: 1
+    combat-wall:
+      enabled: true
+      combat-seconds: 15
+      radius: 6
+      material: STAINED_GLASS
+      data: 14
+      blocked-teleports:
+      - ENDER_PEARL
+      - COMMAND
+      - PLUGIN

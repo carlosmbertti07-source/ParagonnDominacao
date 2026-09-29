@@ -1,0 +1,45 @@
+name: ParagonnDominacao
+version: '${version}'
+main: br.com.paragonn.dominacao.DominacaoPlugin
+description: Dominacao de area por clans (SimpleClans) com pontos, top, NPCs e placeholders.
+author: Paragonn
+depend: [SimpleClans]
+softdepend: [Citizens, PlaceholderAPI, WorldGuard, LuckPerms]
+
+commands:
+  dominacao:
+    description: Sistema de dominacao de area.
+    usage: /<command> help
+    aliases: [dom, dominar]
+
+permissions:
+  dominacao.admin:
+    description: Acesso total ao plugin.
+    default: op
+    children:
+      dominacao.reload: true
+      dominacao.create: true
+      dominacao.delete: true
+      dominacao.npc: true
+      dominacao.points: true
+      dominacao.use: true
+      dominacao.top: true
+      dominacao.stats: true
+  dominacao.reload:
+    default: op
+  dominacao.create:
+    description: pos1, pos2 e create.
+    default: op
+  dominacao.delete:
+    default: op
+  dominacao.npc:
+    default: op
+  dominacao.points:
+    default: op
+  dominacao.use:
+    description: help e status.
+    default: true
+  dominacao.top:
+    default: true
+  dominacao.stats:
+    default: true
